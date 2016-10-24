@@ -1,0 +1,7 @@
+references:
+
+online calculator:  http://www.evanmiller.org/ab-testing/sample-size.html
+udacity forum:
+https://discussions.udacity.com/t/when-to-use-bonferroni-correction/37713
+https://discussions.udacity.com/t/please-help-me-understanding-the-metrics-hypothesis-in-final-proj/160343
+how-to-read-a_z_score:  http://www.had2know.com/academics/normal-distribution-table-z-scores.html
