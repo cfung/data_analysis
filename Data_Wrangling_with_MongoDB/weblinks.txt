@@ -1,0 +1,13 @@
+http://docs.mongodb.org/getting-started/shell/client/
+
+http://docs.mongodb.org/manual/reference/program/mongoimport/
+
+https://www.safaribooksonline.com/blog/2013/06/21/aggregation-in-mongodb/
+
+http://stackoverflow.com/questions/15881497/retrieving-xml-attribute-values-using-python-iterparse
+
+http://eli.thegreenplace.net/2012/03/15/processing-xml-in-python-with-elementtree
+
+http://stackoverflow.com/questions/10883399/unable-to-encode-decode-pprint-output
+
+book:  The definitive guide to MongoDB
