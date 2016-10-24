@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+
+	<style>
+		circle.dimple-series-1{
+			fill: red;
+	}
+
+	h2 {
+		text-align: center;
+	}
+	</style>
+	<script type="text/javascript">
+		function draw(data) {
+
+				"use strict";
+
+				var data_avg = [{'avg_mean':'0.238', 'avg_HR':'43', 'avg_handedness':'R'},
+								{'avg_mean':'0.252', 'avg_HR':'56', 'avg_handedness':'L'},
+								{'avg_mean':'0.240', 'avg_HR':'32', 'avg_handedness':'B'},];
+
+				var margin = 75, 
+					width = 800 - margin,
+					height = 700 - margin;
+
+				d3.select("body")
+				.append("h2")
+				.text("baseball data")
+
+				var svg = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin)
+					.attr("height", height + margin)
+					.append('g').attr('class', 'chart');
+					console.log(width+margin)
+				
+				var myChart = new dimple.chart(svg, data_avg)
+				var x = myChart.addCategoryAxis("x", "avg_handedness");
+				var y_HR = myChart.addMeasureAxis("y", "avg_HR");
+				//var y_HR = myChart.addAxis("y", "avg_HR")
+				var y_AVG = myChart.addMeasureAxis("y", "avg_mean")
+				//x.dateParseFormat = "%Y";
+				//x.tickFormat = "%Y";
+				//x.timeInterval = 4;
+				var bars = myChart.addSeries("avg_handedness", dimple.plot.bar);
+
+				var lines = myChart.addSeries(null, dimple.plot.line);
+
+				lines.lineMarkers = true;
+
+				//myChart.addSeries(null, dimple.plot.scatter);
+				myChart.assignColor("bars", "red", "black", 0.15)
+
+				//add legend
+				myChart.addLegend(60, 5, 680, 10, "right", bars)
+				myChart.draw();
+				
+			};
+	</script>
+</head>
+<body>
+	<div id="chart" style="background:grey"></div>
+	
+	<script type="text/javascript">
+
+		d3.csv("baseball_data.csv", draw);
+	</script>
+
+</body>
+
+</html>

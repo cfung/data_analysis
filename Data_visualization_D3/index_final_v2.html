@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+
+	<style>
+		circle.dimple-series-1{
+			fill: red;
+	}
+
+	h2 {
+		text-align: center;
+	}
+	</style>
+
+	<script type="text/javascript">
+		function draw(data) {
+
+				"use strict";
+
+				//  The following values would be used to plot 2 charts:  
+				//  1st chart (Bar Charts) - display Average Number of Home Runs hit by Right-Handed, Left-Handed and Both-handed players
+				//  2nd chart (Line Charts) - Display the Average of Batting Average by Right-Handed, Left-Handed and Both-handed players
+				//  The data has also been filter.  Pls see baseball_data_analysis.py for reference
+
+				var data_avg = [{'Average of Batting Average':'0.238', 'Home Run Average':'43', 'Handedness':'Right-Handed'},
+								{'Average of Batting Average':'0.252', 'Home Run Average':'56', 'Handedness':'Left-Handed'},
+								{'Average of Batting Average':'0.240', 'Home Run Average':'32', 'Handedness':'Both-Handed'},];
+
+				//  Set up chart margins
+				var margin = 75, 
+					width = 800 - margin,
+					height = 700 - margin;
+
+				//  Set the title of the chart
+				d3.select("body")
+				.append("h2")
+				.text("Left Handed Baseball Players hit more Home Runs and have higher batting average");
+				
+				var svg = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin)
+					.attr("height", height + margin)
+					.append('g').attr('class', 'chart');
+
+				//  the following code will create new instance of dimple chart, 
+				//  call helper method addCategoryAxis to create an ordinal axis
+				//  call helper method addMeasureAxis to create linear numerical axis
+				//  call addSeries to create a new series object, and specify what type of
+				//  chart to create, i.e. bar, bubble
+				var myChart = new dimple.chart(svg, data_avg);
+				var x = myChart.addCategoryAxis("x", "Handedness");
+				var y_HR = myChart.addMeasureAxis("y", "Home Run Average");
+
+				var y_AVG = myChart.addMeasureAxis("y", "Average of Batting Average");
+				
+				//  change the tooltip format to allow 3 decimal places
+				y_AVG.tickFormat = ".3f";
+
+				var bars = myChart.addSeries("Handedness", dimple.plot.bar, [x, y_HR]);
+
+				var lines = myChart.addSeries(null, dimple.plot.line, [x, y_AVG]);
+
+				lines.lineMarkers = true;
+
+				myChart.assignColor("bars", "red", "black", 0.15);
+
+				//add legend
+				myChart.addLegend(25, 5, 680, 10, "right", bars);
+				myChart.draw();
+				
+			};
+	</script>
+</head>
+<body>
+	<div id="chart" style="background:grey"></div>
+	
+	<script type="text/javascript">
+		d3.csv("baseball_data.csv", draw);
+	</script>
+
+</body>
+
+</html>
