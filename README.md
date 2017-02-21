@@ -1,4 +1,4 @@
-# data_analysis
+# Udacity Data Analyst Nanodegree Projects
 
 Project 1: NYV Subway dataset
 
@@ -12,4 +12,4 @@ Project 5: Make Effective Data Visualization - Create a data visualization from 
 
 Project 6: Design an A/B Test - Make design decisions for an A/B test, including which metrics to measure and how long the test should be run. Analyze the results of an A/B test that was run by Udacity and recommend whether or not to launch the change.
 
-[![Data Analyst Nanodegree](https://github.com/cfung/data_analysis/blob/master/nd-grad-cert.pdf)]
+[![Data Analyst Nanodegree](https://github.com/cfung/data_analysis/blob/master/nd-grad-cert.png)]
